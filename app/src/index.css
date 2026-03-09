@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* VITALIS Dark Theme - Cyberpunk Medical */
+    --background: 220 30% 7%;
+    --foreground: 210 40% 98%;
+    --card: 220 25% 10%;
+    --card-foreground: 210 40% 98%;
+    --popover: 220 25% 10%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 189 100% 50%;
+    --primary-foreground: 220 30% 7%;
+    --secondary: 263 100% 50%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 320 100% 50%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 189 100% 50%;
+    --radius: 0.75rem;
+    --sidebar-background: 220 25% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 189 100% 50%;
+    --sidebar-primary-foreground: 220 30% 7%;
+    --sidebar-accent: 220 20% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 189 100% 50%;
+    
+    /* Custom VITALIS Variables */
+    --neon-cyan: #00D9FF;
+    --neon-purple: #7000FF;
+    --neon-pink: #FF00A0;
+    --neon-green: #00FF88;
+    --neon-yellow: #FFB800;
+    --neon-red: #FF4444;
+    --dark-bg: #0A0F1C;
+    --dark-surface: #111827;
+    --dark-surface-light: #1F2937;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-dark text-foreground font-sans antialiased;
+    background-color: var(--dark-bg);
+    min-height: 100vh;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--dark-surface);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--dark-surface-light);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--neon-cyan);
+  }
+}
+
+@layer components {
+  /* Glassmorphism Cards */
+  .glass-card {
+    @apply relative overflow-hidden rounded-2xl;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+  
+  .glass-card-hover:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
+    border-color: rgba(0, 217, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(0, 217, 255, 0.15);
+    transform: translateY(-2px);
+  }
+  
+  /* Neon Glow Effects */
+  .neon-glow-cyan {
+    box-shadow: 0 0 5px var(--neon-cyan), 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
+  }
+  
+  .neon-glow-purple {
+    box-shadow: 0 0 5px var(--neon-purple), 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple);
+  }
+  
+  .neon-glow-pink {
+    box-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+  }
+  
+  .neon-glow-green {
+    box-shadow: 0 0 5px var(--neon-green), 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
+  }
+  
+  .neon-text-cyan {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 5px var(--neon-cyan), 0 0 10px var(--neon-cyan);
+  }
+  
+  .neon-text-purple {
+    color: var(--neon-purple);
+    text-shadow: 0 0 5px var(--neon-purple), 0 0 10px var(--neon-purple);
+  }
+  
+  /* Gradient Borders */
+  .gradient-border {
+    position: relative;
+    background: var(--dark-surface);
+    border-radius: var(--radius);
+  }
+  
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    padding: 1px;
+    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple), var(--neon-pink));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  
+  /* Health Status Indicators */
+  .status-healthy {
+    @apply text-neon-green;
+    text-shadow: 0 0 8px var(--neon-green);
+  }
+  
+  .status-warning {
+    @apply text-neon-yellow;
+    text-shadow: 0 0 8px var(--neon-yellow);
+  }
+  
+  .status-critical {
+    @apply text-neon-red;
+    text-shadow: 0 0 8px var(--neon-red);
+  }
+  
+  /* Animated Backgrounds */
+  .bg-gradient-animated {
+    background: linear-gradient(-45deg, #0A0F1C, #111827, #1a1f2e, #0A0F1C);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+  
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(rgba(0, 217, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 217, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
+  /* Button Styles */
+  .btn-neon {
+    @apply relative px-6 py-3 rounded-xl font-medium transition-all duration-300 overflow-hidden;
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(112, 0, 255, 0.1));
+    border: 1px solid rgba(0, 217, 255, 0.3);
+  }
+  
+  .btn-neon:hover {
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(112, 0, 255, 0.2));
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+    transform: scale(1.02);
+  }
+  
+  .btn-neon:active {
+    transform: scale(0.98);
+  }
+  
+  /* SOS Button */
+  .btn-sos {
+    @apply relative px-8 py-4 rounded-full font-bold text-lg transition-all duration-300;
+    background: linear-gradient(135deg, #FF4444, #FF0066);
+    animation: pulse-glow-red 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-glow-red {
+    0%, 100% { box-shadow: 0 0 10px #FF4444, 0 0 20px #FF4444; }
+    50% { box-shadow: 0 0 20px #FF4444, 0 0 40px #FF4444, 0 0 60px #FF4444; }
+  }
+  
+  /* Health Score Ring */
+  .health-score-ring {
+    @apply relative;
+  }
+  
+  .health-score-ring::after {
+    content: '';
+    @apply absolute inset-0 rounded-full;
+    background: conic-gradient(from 0deg, var(--neon-cyan), var(--neon-purple), var(--neon-pink), var(--neon-cyan));
+    filter: blur(8px);
+    opacity: 0.5;
+  }
+  
+  /* Sparkline Chart */
+  .sparkline {
+    @apply w-full h-8;
+  }
+  
+  /* Skeleton Loading */
+  .skeleton-pulse {
+    @apply rounded-lg;
+    background: linear-gradient(90deg, var(--dark-surface) 25%, var(--dark-surface-light) 50%, var(--dark-surface) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  
+  /* Accessibility - Reduced Motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  /* High Contrast Mode */
+  @media (prefers-contrast: high) {
+    .glass-card {
+      border-width: 2px;
+      border-color: white;
+    }
+    
+    .neon-text-cyan,
+    .neon-text-purple {
+      text-shadow: none;
+    }
+  }
+  
+  /* Focus Styles for Keyboard Navigation */
+  .focus-ring:focus-visible {
+    @apply outline-none ring-2 ring-offset-2;
+    ring-color: var(--neon-cyan);
+    ring-offset-color: var(--dark-bg);
+  }
+  
+  /* Screen Reader Only */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
+
+@layer utilities {
+  /* Custom Utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .bg-clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  
+  .text-transparent {
+    color: transparent;
+  }
+  
+  /* Backdrop Utilities */
+  .backdrop-glass {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  
+  /* Animation Utilities */
+  .animate-in {
+    animation: fade-in 0.3s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+  
+  /* Health Score Colors */
+  .health-excellent {
+    color: var(--neon-green);
+  }
+  
+  .health-good {
+    color: #00D9FF;
+  }
+  
+  .health-fair {
+    color: var(--neon-yellow);
+  }
+  
+  .health-poor {
+    color: var(--neon-red);
+  }
+}
