@@ -1,0 +1,102 @@
+# VITLAS Project Dependencies
+
+## Frontend (app/) - Node.js/npm packages
+
+### Core Dependencies
+react==19.2.0
+react-dom==19.2.0
+react-router-dom==7.13.1
+typescript==5.9.3
+
+### UI & Components
+@radix-ui packages (accordion, dialog, dropdown-menu, etc.)
+lucide-react==0.562.0
+shadcn-ui (component library)
+
+### State Management & Forms
+zustand==5.0.11
+react-hook-form==7.71.2
+zod==4.3.6
+@hookform/resolvers==5.2.2
+
+### API & Data Fetching
+@google/generative-ai==0.24.1
+@tanstack/react-query==5.90.21
+msw==2.12.10 (Mock Service Worker)
+
+### Styling
+tailwindcss==3.4.19
+tailwind-merge==3.4.0
+class-variance-authority==0.7.1
+
+### Animation & Graphics
+framer-motion==12.34.3
+canvas-confetti==1.9.4
+@react-three/fiber==9.5.0
+@react-three/drei==10.7.7
+three==0.183.1
+
+### Charts & Visualization
+recharts==2.15.4
+
+### Utilities
+date-fns==4.1.0
+clsx==2.1.1
+sonner==2.0.7 (notifications)
+next-themes==0.4.6
+vaul==1.1.2
+
+### Dev Dependencies
+vite==7.2.4
+eslint==9.39.1
+@types/react==19.2.5
+@types/node==24.10.1
+postcss==8.5.6
+autoprefixer==10.4.23
+
+---
+
+## Backend (backend/) - Node.js/npm packages
+
+### Core Dependencies
+express==4.21.1
+cors==2.8.5
+dotenv==16.4.5
+uuid==11.0.2
+better-sqlite3==11.5.0
+
+### Dev Dependencies
+typescript==5.6.3
+nodemon==3.1.7
+ts-node==10.9.2
+@types/express==5.0.0
+@types/node==22.9.0
+@types/uuid==10.0.0
+
+---
+
+## Installation Instructions
+
+Install both frontend and backend dependencies using npm:
+
+### Frontend
+cd app
+npm install
+
+### Backend
+cd backend
+npm install
+
+---
+
+## Node.js Version
+Recommended: Node.js v16 or higher
+
+## Package Manager
+npm, yarn, or pnpm (any modern package manager works)
+
+## Notes
+- This project uses npm/yarn package management, not pip
+- All dependencies are specified in respective package.json files
+- For production builds, use: npm run build
+- For development, use: npm run dev
