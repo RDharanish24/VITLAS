@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+.next/
+out/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+.DS_Store
+*.iml
+
+# OS files
+Thumbs.db
+.AppleDouble
+.LSOverride
+*.log
+
+# Cache and temporary files
+.cache/
+.eslintcache
+.prettierignore
+.turbo/
+dist-ssr/
+*.local
+
+# Testing
+coverage/
+.nyc_output/
+
+# Vite
+vite_temp/
+
+# Misc
+*.pem
